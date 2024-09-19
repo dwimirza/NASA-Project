@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-server" : "npm install --prefix server",
-    "install-clients" : "npm install --prefix clients",
+    "install-server": "npm install --prefix server",
+    "install-clients": "npm install --prefix clients",
     "install": "npm run install-server && npm run install-clients",
     "server": "npm run watch --prefix server",
     "clients": "npm start --prefix clients",
@@ -15,5 +15,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^8.4.4"
+  }
 }
