@@ -4,6 +4,7 @@ const {
     parse
 } = require('csv-parse');
 
+const planets = require('./planets.mongoose');
 const habitablePlanets = [];
 
 function isHabitablePlanet(planet) {
@@ -19,9 +20,11 @@ function loadPlanetsData() {
                 comment: '#',
                 columns: true
             }))
-            .on('data', (data) => {
+            .on('data', async (data) => {
                 if (isHabitablePlanet(data)) {
-                    habitablePlanets.push(data)
+                   await planets.create({
+                    keplerName : data.kepler_name,
+                   });
                 }
                 // habitablePlanets.push(data)
             })
@@ -37,8 +40,8 @@ function loadPlanetsData() {
     })
 }
 
-function getAllPlanets(){
-    return habitablePlanets
+async function getAllPlanets(){
+    return await planets.find({});
 }
 
 module.exports = {
